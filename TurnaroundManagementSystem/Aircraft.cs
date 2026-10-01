@@ -13,22 +13,17 @@ namespace TurnaroundManagementSystem
         private int _fuelCapacity;
         private int _currentFuel;
 
-        public Aircraft()
-        {
-
-        }
-        public Aircraft(string tailNumber, string model, int fuelCapacity = 250)
+        public Aircraft(string tailNumber, string model)
         {
             TailNumber = tailNumber;
             Model = model;
-            FuelCapacity = fuelCapacity;
         }
 
-        public Aircraft(string tailNumber, string model, int fuelCapacity = 250, int passengerCapacity = 100)
+        public Aircraft(string tailNumber, string model, int currentFuel, int passengerCapacity = 100)
         {
             TailNumber = tailNumber;
             Model = model;
-            FuelCapacity = fuelCapacity;
+            CurrentFuel = currentFuel;
             PassengerCapacity = passengerCapacity;
         }
 
@@ -41,7 +36,10 @@ namespace TurnaroundManagementSystem
             set
             {
                 if (value < 0)
+                {
                     _passengerCapacity = 0;
+                    Console.WriteLine("Yolcu kapasitesi negatif olamaz!!");
+                }
                 else
                     _passengerCapacity = value;
             }
@@ -71,17 +69,7 @@ namespace TurnaroundManagementSystem
             }
             set
             {
-                if (value < 0)
-                {
-                    Console.WriteLine("Lütfen geçerli bir yakıt miktarı giriniz");
-                    _currentFuel = 0;
-                }
-                else if (value > FuelCapacity)
-                {
-                    _currentFuel = FuelCapacity;
-                }
-                else
-                    _currentFuel = value;
+                _currentFuel = value;
             }
         }
 
@@ -90,12 +78,14 @@ namespace TurnaroundManagementSystem
         #region behavior
         public void SetFuel(int fuelAmount)
         {
-            if (fuelAmount <0)
+            if (fuelAmount < 0)
             {
-                Console.WriteLine("Yakıt miktarı negatif olamaz!");  
-            } else if(fuelAmount > FuelCapacity)
+                Console.WriteLine("Yakıt miktarı negatif olamaz!");
+            }
+            else if (fuelAmount > FuelCapacity)
             {
-                Console.WriteLine("Girilen yakıt depo kapasitesini aşıyor.");
+                CurrentFuel = fuelAmount;
+                Console.WriteLine("Girilen yakıt depo kapasitesini aşıyor!");
             }
             else
             {
@@ -106,14 +96,12 @@ namespace TurnaroundManagementSystem
 
         public void AddFuel(int fuel)
         {
-            if ((CurrentFuel+fuel) <= FuelCapacity)
+            if ((CurrentFuel + fuel) >= FuelCapacity || fuel < 0)
+                Console.WriteLine("Eklemek istediğiniz miktarı kontrol ediniz.");
+            else
             {
                 CurrentFuel += fuel;
                 Console.WriteLine("Yakıt ekleme işlemi tamamlandı");
-            }
-            else
-            {
-                Console.WriteLine("Eklemek istediğiniz miktar depo kapasitesini aşmaktadır.");
             }
         }
         #endregion

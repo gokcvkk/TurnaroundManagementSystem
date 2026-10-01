@@ -9,10 +9,9 @@ class Aircraft
     + Model: string
     + PassengerCapacity:int
     + FuelCapacity:int
-    + CurrentCapacity:int
-    + Aircraft()
-    + Aircraft(tailNumber:int, model:int,fuelCapacity:int)
-    + Aircraft(tailNumber:int, model:int,fuelCapacity:int,passengerCapacity:int)
+    + CurrentFuel:int
+    + Aircraft(tailNumber:string, model:string)
+    + Aircraft(tailNumber:string, model:string,currentFuel:int,passengerCapacity:int)
     + SetFuel(fuelAmount:int)
     + AddFuel(fuel:int)
 }

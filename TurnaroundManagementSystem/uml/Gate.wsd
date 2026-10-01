@@ -3,7 +3,7 @@ title Gate
 class Gate
 {
     - _isOccupied:bool
-    + GateCode:string
+    + GateCode:string?
     + IsOccupied:bool
     + CurrentFlight:Flight?
     + AssignFlight(flight:Flight)

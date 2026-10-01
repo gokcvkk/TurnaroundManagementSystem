@@ -8,10 +8,6 @@ namespace TurnaroundManagementSystem
 {
     public class GroundOperation
     {
-        public GroundOperation()
-        {
-
-        }
         public GroundOperation(string operationName)
         {
             OperationName = operationName;
@@ -24,14 +20,9 @@ namespace TurnaroundManagementSystem
 
         public string OperationName { get; set; }
         public int EstimatedMinutes { get; set; }
-        public bool IsCompleted { get; set; }
-        public Employee? ResponsibleEmployee { get; set; }
+        public bool IsCompleted { get; private set; }
+        public string? ResponsibleEmployee { get; set; }
 
 
-        //operasyonun kendi davranışı üzerinden tamamlanmasını düşün.
-        public void Complete()
-        {
-
-        }
     }
 }

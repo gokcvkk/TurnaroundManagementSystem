@@ -3,14 +3,14 @@ title Flight
 class Flight
 {
     - _passengerCount:int
-    + FlightNumber:string
-    + Destination:string
+    + FlightNumber:string?
+    + Destination:string?
     + ArrivalTime:DateTime
     + DepartureTime:DateTime
     + PassengerCount:int
-    + Aircraft:Aircraft
-    + Gate:Gate
-    +CanCarryPassenger(passengerCount:int,AircraftPassengerCount:int)
+    + Aircraft:Aircraft?
+    + Gate:Gate?
+    + CanCarryPassenger()
 
 }
 @enduml

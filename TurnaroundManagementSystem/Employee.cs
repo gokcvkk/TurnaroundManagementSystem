@@ -9,8 +9,26 @@ namespace TurnaroundManagementSystem
     public class Employee
     {
         public int EmployeeId { get; set; }
-        public string Name { get; set; }
-        public string Department { get; set; }
+        public string? Name { get; set; }
+        public string? Department { get; set; }
         public bool IsAvailable { get; set; }
+
+
+
+        public void AddEmployee(GroundOperation groundOperation)
+        {
+            if (IsAvailable == false)
+            {
+                Console.WriteLine($"{Name} çalışıyor.\nBaşka görevli atayınız!");
+            }
+            if (Department != groundOperation.OperationName)
+            {
+                Console.WriteLine($"Lütfen {Department} çalışan bir görevli atayınız!");
+            }
+
+            groundOperation.ResponsibleEmployee = Name;
+            IsAvailable = false;
+            Console.WriteLine($"{Name} {groundOperation.OperationName} operasyonuna atandı!");
+        }
     }
 }

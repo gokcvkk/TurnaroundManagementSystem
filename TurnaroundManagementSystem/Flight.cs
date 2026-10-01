@@ -10,8 +10,8 @@ namespace TurnaroundManagementSystem
     {
         #region 
         private int _passengerCount;
-        public string FlightNumber { get; set; }
-        public string Destination { get; set; }
+        public string? FlightNumber { get; set; }
+        public string? Destination { get; set; }
         public DateTime? ArrivalTime { get; set; }
         public DateTime? DepartureTime { get; set; }
         public int PassengerCount
@@ -31,15 +31,15 @@ namespace TurnaroundManagementSystem
                 }
             }
         }
-        public Aircraft Aircraft { get; set; }
-        public Gate Gate { get; set; }
+        public Aircraft? Aircraft { get; set; }
+        public Gate? Gate { get; set; }
 
         #endregion
 
         #region behaviour
-        public bool CanCarryPassengers(int passengerCount, int aircraftPassengerCount)
+        public bool CanCarryPassengers()
         {
-            if (passengerCount > aircraftPassengerCount)
+            if (PassengerCount > Aircraft.PassengerCapacity)
             {
                 Console.WriteLine("Uçak kapasitesi aşıldı!!");
                 return false;

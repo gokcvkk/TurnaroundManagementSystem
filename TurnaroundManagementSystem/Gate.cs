@@ -11,7 +11,7 @@ namespace TurnaroundManagementSystem
         #region 
         private bool _isOccupied;
 
-        public string GateCode { get; set; }
+        public string? GateCode { get; set; }
         public bool IsOccupied
         {
             get
@@ -21,7 +21,10 @@ namespace TurnaroundManagementSystem
             set
             {
                 if (value == true)
+                {
+                    _isOccupied = value;
                     Console.WriteLine("Kapı şu anda dolu!");
+                }
                 else
                     _isOccupied = value;
             }
@@ -37,17 +40,18 @@ namespace TurnaroundManagementSystem
             {
                 CurrentFlight = flight;
                 IsOccupied = true;
+                Console.WriteLine($"{GateCode} numaralı kapıda {CurrentFlight.FlightNumber} uçuşu var!");
             }
             else
             {
-                Console.WriteLine("Kapı dolu, bekleyiniz ya da farklı bir kapı seçiniz!");
+                Console.WriteLine($"{GateCode} numaralı kapı dolu, bekleyiniz ya da farklı bir kapı seçiniz!");
             }
         }
 
         public void ReleaseGate()
-        { 
-            //??????????
-
+        {
+            CurrentFlight= null;
+            IsOccupied = false;
         }
 
 
