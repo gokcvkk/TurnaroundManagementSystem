@@ -84,7 +84,6 @@ namespace TurnaroundManagementSystem
             }
             else if (fuelAmount > FuelCapacity)
             {
-                CurrentFuel = fuelAmount;
                 Console.WriteLine("Girilen yakıt depo kapasitesini aşıyor!");
             }
             else
@@ -96,7 +95,7 @@ namespace TurnaroundManagementSystem
 
         public void AddFuel(int fuel)
         {
-            if ((CurrentFuel + fuel) >= FuelCapacity || fuel < 0)
+            if (fuel < 0 || CurrentFuel + fuel > FuelCapacity)
                 Console.WriteLine("Eklemek istediğiniz miktarı kontrol ediniz.");
             else
             {

@@ -39,15 +39,19 @@ namespace TurnaroundManagementSystem
         #region behaviour
         public bool CanCarryPassengers()
         {
+            if (Aircraft == null)
+            {
+                Console.WriteLine("Uçuşa atanmış bir uçak yok!");
+                return false;
+            }
+
             if (PassengerCount > Aircraft.PassengerCapacity)
             {
                 Console.WriteLine("Uçak kapasitesi aşıldı!!");
                 return false;
             }
-            else
-            {
-                return true;
-            }
+
+            return true;
         }
 
         #endregion

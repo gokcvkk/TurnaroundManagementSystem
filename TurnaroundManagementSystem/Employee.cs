@@ -17,16 +17,19 @@ namespace TurnaroundManagementSystem
 
         public void AddEmployee(GroundOperation groundOperation)
         {
-            if (IsAvailable == false)
+            if (!IsAvailable)
             {
                 Console.WriteLine($"{Name} çalışıyor.\nBaşka görevli atayınız!");
-            }
-            if (Department != groundOperation.OperationName)
-            {
-                Console.WriteLine($"Lütfen {Department} çalışan bir görevli atayınız!");
+                return;
             }
 
-            groundOperation.ResponsibleEmployee = Name;
+            if (Department != groundOperation.OperationName)
+            {
+                Console.WriteLine($"Lütfen {groundOperation.OperationName} operasyonu için uygun departmandan görevli atayınız!");
+                return;
+            }
+
+            groundOperation.ResponsibleEmployee = this;
             IsAvailable = false;
             Console.WriteLine($"{Name} {groundOperation.OperationName} operasyonuna atandı!");
         }
